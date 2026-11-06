@@ -28,15 +28,3 @@ export const profile: {
 };
 
 export const displayName = (lang: Language) => lang === 'ko' ? profile.koreanName : profile.name;
-
-// Published works only, from the owner's CV. No preliminary-report file or results.
-export const publications = [
-  {
-    title: 'Evolvability of cancer-associated genes under APOBEC3A/B selection',
-    venue: 'iScience', year: 2024, doi: '10.1016/j.isci.2024.109433',
-  },
-  {
-    title: 'Distinct immune tones are established by Lactococcus lactis BFE920 and Lactobacillus plantarum FGL0001 in the gut of olive flounder',
-    venue: 'Fish & Shellfish Immunology', year: 2016, doi: '10.1016/j.fsi.2016.06.022',
-  },
-];

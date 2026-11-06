@@ -111,7 +111,8 @@ test('about leads the homepage and notes switch to the same translated article',
   await expect(page.locator('#research')).toContainText('Single-nucleus multiome analysis');
   await expect(page.locator('#research')).toContainText('Agent-based modeling');
   await expect(page.locator('a[href="https://www.khartllan.com/"]')).toHaveCount(1);
-  await expect(page.locator('.publications a')).toHaveCount(2);
+  await expect(page.locator('#publications .citation-title a')).toHaveCount(2);
+  await expect(page.locator('#preprints .citation-title a')).toHaveCount(3);
   await expect(page.locator('a[href$=".pdf"]')).toHaveCount(0);
   for (const language of languages) {
     await page.goto(homePath(language.code));
@@ -160,6 +161,38 @@ test('Noto fonts load from this site for every script, on headings and body', as
     await expect(page.locator('html')).toHaveCSS('background-color', 'rgb(255, 255, 255)');
     page.off('response', watchFonts);
   }
+});
+
+test('all works show complete author lists, preserve author order, and highlight only the owner', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.locator('#publications-title')).toHaveText('Publications');
+  await expect(page.locator('#preprints-title')).toHaveText('Preprints');
+  await expect(page.locator('.citation-item')).toHaveCount(5);
+  await expect(page.locator('.author-owner')).toHaveCount(5);
+  for (const [id, count, role] of [
+    ['apobec-selection', 4, 'First author'], ['immune-tones', 9, 'Co-author'],
+    ['acidic-ecosystems', 17, 'Co-author'], ['parp-persistence', 9, 'Co-first author'],
+    ['genome-robustness', 6, 'First author'],
+  ] as const) {
+    const work = page.locator(`[data-work="${id}"]`);
+    await expect(work.locator('.citation-author')).toHaveCount(count);
+    await expect(work.locator('.author-owner')).toHaveCount(1);
+    await expect(work.locator('.author-role')).toHaveText(role);
+    await expect(work.locator('.citation-authors')).not.toContainText(/et al\./i);
+  }
+  await expect(page.locator('[data-work="immune-tones"] .citation-author').nth(1).locator('strong')).toHaveText('Joon Hyun Song');
+  await expect(page.locator('[data-work="parp-persistence"] .citation-author').nth(1).locator('strong')).toHaveText('Joon-Hyun Song');
+  await expect(page.locator('[data-work="parp-persistence"] sup')).toHaveCount(2);
+  await expect(page.locator('[data-work="acidic-ecosystems"] .citation-author').nth(3).locator('strong')).toHaveText('Joon-Hyun Song');
+  await expect(page.locator('#preprints .citation-legend')).toContainText('Equal contribution');
+  await expect(page.locator('[data-work="parp-persistence"] .citation-title a')).toHaveAttribute('href', 'https://www.biorxiv.org/content/10.1101/2025.10.08.681266v2.abstract');
+  await expect(page.locator('[data-work="acidic-ecosystems"] .citation-title a')).toHaveAttribute('href', 'https://www.biorxiv.org/content/10.64898/2026.01.14.699600v3.abstract');
+  await expect(page.locator('[data-work="genome-robustness"] .citation-title a')).toHaveAttribute('href', 'https://www.biorxiv.org/content/10.1101/2024.09.05.611453v3');
+  await page.goto('/ko/');
+  await expect(page.locator('#publications-title')).toHaveText('학술지 논문');
+  await expect(page.locator('#preprints-title')).toHaveText('프리프린트');
+  await expect(page.locator('[data-work="parp-persistence"] .author-role')).toHaveText('공동 제1저자');
+  await expect(page.locator('[data-work="acidic-ecosystems"] .author-role')).toHaveText('공저자');
 });
 
 test('protected backup pages keep every original paragraph and link', async ({ page }) => {

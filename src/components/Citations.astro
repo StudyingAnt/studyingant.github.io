@@ -1,0 +1,25 @@
+---
+import type { Work } from '../data/publications';
+import type { Language } from '../data/languages';
+import { citationLabels } from '../data/citations';
+
+interface Props { lang: Language; id: 'publications' | 'preprints'; works: Work[]; }
+const { lang, id, works } = Astro.props;
+const labels = citationLabels[lang];
+const hasEqualContribution = works.some((work) => work.authors.some((author) => author.coFirst));
+---
+<section class="publications citation-group" id={id} aria-labelledby={`${id}-title`}>
+  <h4 id={`${id}-title`}>{labels[id]}</h4>
+  <ol class="citation-list">
+    {works.map((work) => <li class="citation-item" data-work={work.id}>
+      <h5 class="citation-title" lang="en" dir="ltr"><a href={work.url}>{work.title}</a></h5>
+      <p class="citation-authors" lang="en" dir="ltr">{work.authors.map((author, index) => <span class="citation-author">{index > 0 ? ', ' : ''}{author.owner ? <strong class="author-owner">{author.name}</strong> : author.name}{author.coFirst && <sup lang={lang} aria-label={labels['co-first']}>†</sup>}</span>)}</p>
+      <div class="citation-meta">
+        <cite lang="en" dir="ltr">{work.venue}</cite>
+        {work.version ? <><span lang="en" dir="ltr">v{work.version}</span><span>{labels.firstPosted} <bdi>{work.year}</bdi></span></> : <span>{work.year}</span>}
+        <span class="author-role">{labels[work.ownerRole]}</span>
+      </div>
+    </li>)}
+  </ol>
+  {hasEqualContribution && <p class="citation-legend">{labels.equalContribution}</p>}
+</section>

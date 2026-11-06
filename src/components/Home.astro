@@ -2,7 +2,9 @@
 import Base from '../layouts/Base.astro';
 import { copy, pagePath, type Language } from '../data/languages';
 import { sections } from '../data/sections';
-import { profile, publications, displayName } from '../data/profile';
+import { profile, displayName } from '../data/profile';
+import { publications, preprints } from '../data/publications';
+import Citations from './Citations.astro';
 import { academic } from '../data/academic';
 import { introduction } from '../data/introduction';
 import { notes, getNote } from '../data/writing';
@@ -36,7 +38,8 @@ const intro = introduction[lang];
         <li><span class="topic-label" lang="en">ABM</span><h4>{a.modeling}</h4><p>{a.modelingText}</p></li>
         <li><h4>{a.theory}</h4><p>{a.theoryText}</p></li>
       </ul>
-      <div class="publications" id="publications"><h4>{a.publications}</h4><ul>{publications.map((publication) => <li><a href={`https://doi.org/${publication.doi}`} lang="en">{publication.title}</a><span lang="en" dir="ltr">{publication.venue} · {publication.year}</span></li>)}</ul></div>
+      <Citations lang={lang} id="publications" works={publications} />
+      <Citations lang={lang} id="preprints" works={preprints} />
     </div>
   </section>
   <section class="section-row" id="background" aria-labelledby="background-title">

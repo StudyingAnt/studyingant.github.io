@@ -27,9 +27,20 @@ Playwright may need `npx playwright install --with-deps chromium`.
 ## Content and languages
 
 - `src/components/Home.astro`: homepage structure.
-- `src/data/profile.ts`: CV-backed name, education, published works, professional
+- `src/data/profile.ts`: CV-backed name, education, professional
   email, ORCID, and the external Khartllan link. Personal interests/hobbies belong
   here; only worldbuilding belongs off this site. Do not invent biographical facts.
+- `src/data/publications.ts`: all published papers and public preprints, with full
+  author lists in published order and spelling. Explicit owner flags identify the
+  name to bold, including spelling variants. Show first/co-first/co-author roles
+  and daggers for confirmed equal-first authors. The owner confirmed ordinary
+  co-authorship on the 2016 fish paper and co-first authorship on the PARP v2
+  preprint. Preprint links preserve the supplied versions; years mean first
+  posting. Public metadata sources are recorded per work. Current deposits can
+  supersede author lists and titles in older PMC archives.
+- `src/components/Citations.astro` and `src/data/citations.ts`: shared citation
+  layout and labels for all ten languages. Paper titles and authors keep their
+  published language and left-to-right order on Arabic/Persian pages as well.
 - `src/data/academic.ts`: research interests, methods, degree labels, and personal
   interests in ten languages. Broad directions are based on owner-supplied
   sources; no unpublished results or report extracts are published.
@@ -99,7 +110,7 @@ rclone workflow; it neither executes backups nor handles OAuth credentials.
 Local rclone configuration and Google OAuth console settings are outside this
 repository and are not changed by deployment.
 
-Career and selected published citations follow the owner-supplied CV; current
+Career and published citations follow the owner-supplied CV; current
 Ph.D. student status and snMultiome/ABM interests were confirmed by the owner.
 Private PDFs and extracted text remain outside the repository. Do not publish
 the preliminary report, CV PDF, unpublished results, phone number, or referees’
