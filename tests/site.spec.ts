@@ -9,8 +9,9 @@ test('all languages render, have reciprocal links, and fit mobile screens', asyn
     expect(response?.status()).toBe(200);
     await expect(page.locator('html')).toHaveAttribute('lang', language.code === 'zh' ? 'zh-CN' : language.code);
     await expect(page.locator('html')).toHaveAttribute('dir', ['ar', 'fa'].includes(language.code) ? 'rtl' : 'ltr');
-    await expect(page.locator('h1')).toHaveText('Joon-Hyun Song');
-    await expect(page.locator('.hero .research-focus')).toBeVisible();
+    await expect(page.locator('h1')).toHaveText(language.code === 'ko' ? '송준현' : 'Joon-Hyun Song');
+    await expect(page.locator('.portrait-placeholder')).toBeVisible();
+    await expect(page.locator('.biography p')).toHaveCount(3);
     await expect(page.locator('select option')).toHaveText(languages.map((entry) => entry.name));
     await expect(page.locator('link[rel="alternate"]')).toHaveCount(11);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
@@ -32,9 +33,64 @@ test('language switching keeps the current section and English remains the defau
   await expect(page).toHaveURL(/\/#research$/);
 });
 
-test('research leads the homepage and notes switch to the same translated article', async ({ page }) => {
+test('Korean uses the supplied greeting and name; Korean and English have no AI label', async ({ page }) => {
+  for (const path of ['/', '/ko/', '/writing/humanity-in-science/', '/ko/writing/humanity-in-science/']) {
+    await page.goto(path);
+    await expect(page.locator('.translation-notice, .translation-note')).toHaveCount(0);
+    await expect(page.locator('body')).not.toContainText('AI 번역 초안');
+  }
+  await page.goto('/ko/');
+  await expect(page).toHaveTitle('송준현');
+  await expect(page.locator('.greeting')).toHaveText('안녕하세요, 과학하고 글쓰는 사람입니다.');
+  await expect(page.locator('.identity')).toContainText('송준현');
+  await expect(page.locator('h1')).toHaveText('송준현');
+  await expect(page.locator('h1')).toHaveAttribute('lang', 'ko');
+  await expect(page.locator('.footer-name')).toHaveText('송준현');
+  await expect(page.locator('.biography')).toContainText('계산생물학자');
+  await expect(page.locator('.biography')).toContainText('언어를 배우는');
+  await expect(page.locator('#research')).toContainText('시간에 따라 달라지는 환경');
+});
+
+test('other languages keep a small notice visible while scrolling, with matching source links', async ({ page }) => {
+  for (const language of languages.filter((entry) => !['en', 'ko'].includes(entry.code))) {
+    await page.setViewportSize({ width: 320, height: 812 });
+    await page.goto(homePath(language.code));
+    await page.evaluate(() => document.fonts.ready);
+    const notice = page.locator('.translation-notice');
+    await expect(notice).toBeVisible();
+    await expect(notice).toHaveCSS('position', 'fixed');
+    await expect(notice.locator('a[lang="ko"]')).toHaveAttribute('href', '/ko/');
+    await expect(notice.locator('a[lang="en"]')).toHaveAttribute('href', '/');
+    await page.evaluate(() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'instant' }));
+    await expect(notice).toBeInViewport({ ratio: 1 });
+    await expect.poll(async () => {
+      const bounds = await notice.boundingBox();
+      const padding = await page.locator('body').evaluate((body) => parseFloat(getComputedStyle(body).paddingBottom));
+      return padding >= bounds!.height;
+    }).toBe(true);
+    const footer = await page.locator('footer').boundingBox();
+    const bounds = await notice.boundingBox();
+    expect(footer!.y + footer!.height).toBeLessThanOrEqual(bounds!.y + 1);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+    await page.goto(`${homePath(language.code)}writing/humanity-in-science/`);
+    await expect(notice).toBeVisible();
+    await expect(notice.locator('a[lang="ko"]')).toHaveAttribute('href', '/ko/writing/humanity-in-science/');
+    await expect(notice.locator('a[lang="en"]')).toHaveAttribute('href', '/writing/humanity-in-science/');
+  }
+  await page.goto('/fr/#philosophy');
+  await page.locator('.translation-notice a[lang="ko"]').click();
+  await expect(page).toHaveURL(/\/ko\/#philosophy$/);
+  await expect(page.locator('.translation-notice')).toHaveCount(0);
+});
+
+test('about leads the homepage and notes switch to the same translated article', async ({ page }) => {
   await page.goto('/');
+  const about = await page.locator('#about').boundingBox();
   const research = await page.locator('#research').boundingBox();
+  expect(about!.y).toBeLessThan(research!.y);
+  await expect(page.locator('nav a').first()).toHaveAttribute('href', '/#about');
+  await expect(page.locator('.biography')).toContainText('computational biologist');
+  await expect(page.locator('.biography')).toContainText('learning languages');
   const philosophy = await page.locator('#philosophy').boundingBox();
   expect(research!.y).toBeLessThan(philosophy!.y);
   await expect(page.locator('.career dl > div')).toHaveCount(3);
@@ -77,7 +133,7 @@ test('Noto fonts load from this site for every script, on headings and body', as
     await session.send('DOM.enable');
     await session.send('CSS.enable');
     const { root } = await session.send('DOM.getDocument');
-    for (const selector of ['.research-focus', '.intro']) {
+    for (const selector of ['.biography p', '#research h3']) {
       const { nodeId } = await session.send('DOM.querySelector', { nodeId: root.nodeId, selector });
       const { fonts } = await session.send('CSS.getPlatformFontsForNode', { nodeId });
       expect(fonts.some((font) => font.isCustomFont && font.familyName.includes(family))).toBe(true);

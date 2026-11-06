@@ -33,12 +33,17 @@ Playwright may need `npx playwright install --with-deps chromium`.
 - `src/data/academic.ts`: research interests, methods, degree labels, and personal
   interests in ten languages. Broad directions are based on owner-supplied
   sources; no unpublished results or report extracts are published.
-- `src/data/sections.ts`: section labels and short-note descriptions. Research
-  leads; career, philosophy, personal interests, and short writing follow.
+- `src/data/introduction.ts`: Korean-source greeting, lab-profile-based biography,
+  photo-placeholder labels, and expanded research directions in ten languages.
+  About leads the page; detailed research, background, writing, scientific
+  philosophy, and personal interests follow. No portrait is published yet.
+- `src/data/sections.ts`: section labels and short-note descriptions.
+- `src/data/translation.ts`: persistent AI-translation notices for the eight
+  languages other than Korean and English, linked to matching reference pages.
 - `src/data/writing.ts`: short notes with localized content. The first note uses
   the owner's existing two philosophical principles. Notes have static routes
   at `/writing/<slug>/` and `/<language>/writing/<slug>/`.
-- `src/data/languages.ts`: English source copy and translations, in display order:
+- `src/data/languages.ts`: Korean-source copy and translations, in display order:
   English, Korean, Chinese (Simplified), Spanish, French, Russian, Arabic,
   Japanese, German, Persian.
 - `src/layouts/Base.astro`: metadata, navigation, language selector, and footer.
@@ -56,14 +61,17 @@ English lives at `/`; other homepages use `/ko/`, `/zh/`, `/es/`, `/fr/`, `/ru/`
 `/ar/`, `/ja/`, `/de/`, and `/fa/`. Language switching preserves the current note
 or homepage section hash. Reciprocal language metadata points to matching pages.
 Every homepage is static and can be read without JavaScript; the select control
-uses JavaScript for navigation. All translated homepages are labelled as AI
-translations. Korean uses the owner's supplied motto; other Korean wording and
-all other translations still need review. The backup and privacy pages remain
-English, with `EN` labels on their footer links.
+uses JavaScript for navigation. Korean and English are maintained by the owner
+and display no AI labels. Other languages have a small fixed notice referring
+readers to Korean or English, on homepages and notes alike. The notice reserves
+its measured height to keep footer links accessible. Korean pages show the name
+송준현. The backup and privacy pages retain their English originals, with `EN`
+labels on their footer links.
 
 Translations are committed copy, not generated during visits or deployment.
-Edit English as the editorial source, then deliberately update affected
-translations. Never overwrite manually corrected text with bulk AI output.
+Use Korean as the editorial source, adapt natural English, and deliberately
+update the other translations. The owner corrects Korean and English directly.
+Never overwrite manually corrected text with bulk AI output.
 No translation API, API key, scheduled translation job, or external font service
 is used. The site does not include analytics or collect form submissions.
 
