@@ -7,11 +7,14 @@
   order in `src/data/languages.ts`: en, ko, zh, es, fr, ru, ar, ja, de, fa.
 - Other languages use dedicated static paths. Preserve page and section targets
   during switching. Apply `lang` and RTL direction correctly for Arabic/Persian.
-- English is the editorial source. English and Korean can be corrected by the
-  owner; preserve those corrections. Translations are saved in source control,
-  never regenerated on page load or automatically overwritten during a build.
-  Current translated copy is AI-generated and labelled until reviewed. If copy
-  changes, update affected translations explicitly and flag review status in the PR.
+- Korean is the editorial source; English remains the default public route.
+  The owner corrects both Korean and English, so neither language displays AI
+  translation labels or original-language prompts. Preserve owner corrections.
+  Other languages show a small persistent AI-translation notice with references
+  to the matching Korean and English page. Keep it visible while scrolling and
+  reserve its height so it does not hide the footer. Preserve the current article
+  and section when following reference links. Translations are committed copy;
+  never regenerate on visits or overwrite owner edits during builds.
 - Scientific motto: **Humanity in Science, Science for Humanity.** Owner's Korean
   wording: **사람이 담긴 과학, 사람을 향한 과학.** Preserve both meanings: humanistic
   and ethical scientific practice respecting human dignity, and science serving
@@ -24,9 +27,15 @@
 - Use self-hosted Noto Sans throughout, including headings, navigation, and
   policy pages. Use Noto Sans KR/SC/JP and Noto Sans Arabic for the corresponding
   scripts; keep font license notices in `public/fonts/licenses/`.
-- Lead the homepage with the owner's name and research interests. Put career,
-  scientific philosophy, and short writing below that. Add only owner-supplied
-  career facts to `src/data/profile.ts`; empty career data stays hidden.
+- Lead with a brief About section adapted from the owner's lab-site introduction:
+  computational biology, evolution, robustness/evolvability, cancer multiome
+  analysis/modeling, scientific philosophy/writing, and learning languages.
+  Use a photo placeholder until the owner supplies a portrait for publication.
+  Korean greeting: “안녕하세요, 과학하고 글쓰는 사람입니다.” Korean display name:
+  “송준현”. Use the Korean name in the page title, header, hero, and footer on
+  Korean pages; use Joon-Hyun Song elsewhere. About precedes detailed research;
+  retain existing section anchors. Add only owner-supplied career facts to
+  `src/data/profile.ts`; empty career data stays hidden.
 - Personal interests and hobbies belong on this site, except worldbuilding.
   Worldbuilding is linked only through `profile.worldbuildingSite` to
   https://www.khartllan.com/; do not publish worldbuilding material here.

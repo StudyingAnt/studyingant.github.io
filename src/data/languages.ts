@@ -12,6 +12,7 @@ export const languages = [
 ] as const;
 
 export type Language = (typeof languages)[number]['code'];
+export const sourceLanguage: Language = 'ko';
 export const homePath = (lang: Language) => lang === 'en' ? '/' : `/${lang}/`;
 export const pagePath = (lang: Language, path: string) => `${homePath(lang)}${path}`;
 
@@ -20,11 +21,11 @@ type Copy = {
   eyebrow: string; motto: string; intro: string; philosophy: string;
   principleOne: string; principleTwo: string; abm: string; abmText: string;
   connect: string; connectText: string; profile: string; resources: string;
-  backup: string; privacy: string; translation: string;
+  backup: string; privacy: string;
 };
 
-// Editorial source: English. Korean wording of the motto is supplied by the owner.
-// All other translated copy starts as AI-generated and awaits owner review.
+// Editorial source: Korean. The owner maintains Korean and English without AI labels.
+// Other languages are AI translations with persistent reference notices.
 export const copy: Record<Language, Copy> = {
   en: {
     language: 'Language', skip: 'Skip to content', about: 'Philosophy', research: 'Research', contact: 'Contact',
@@ -35,7 +36,7 @@ export const copy: Record<Language, Copy> = {
     principleTwo: 'Science should serve people and contribute to a more humane world.',
     abm: 'Agent-based modeling', abmText: 'Research interests include agent-based modeling (ABM).',
     connect: 'Stay in touch', connectText: 'Find my projects and public profile on GitHub.', profile: 'GitHub profile',
-    resources: 'Research tools', backup: 'ABM backup information', privacy: 'Privacy policy', translation: '',
+    resources: 'Research tools', backup: 'ABM backup information', privacy: 'Privacy policy',
   },
   ko: {
     language: '언어', skip: '본문으로 건너뛰기', about: '철학', research: '연구', contact: '연락',
@@ -47,7 +48,6 @@ export const copy: Record<Language, Copy> = {
     abm: '행위자 기반 모형', abmText: '연구 관심 분야에는 행위자 기반 모형(ABM)이 포함됩니다.',
     connect: '연결하기', connectText: 'GitHub에서 프로젝트와 공개 프로필을 확인하실 수 있습니다.', profile: 'GitHub 프로필',
     resources: '연구 도구', backup: 'ABM 백업 안내', privacy: '개인정보처리방침',
-    translation: 'AI 번역 초안 · 영어 원문 보기',
   },
   zh: {
     language: '语言', skip: '跳转到正文', about: '理念', research: '研究', contact: '联系',
@@ -57,7 +57,7 @@ export const copy: Record<Language, Copy> = {
     principleTwo: '科学应服务于人，为一个更具人文关怀的世界作出贡献。',
     abm: '基于主体的建模', abmText: '研究兴趣包括基于主体的建模（ABM）。',
     connect: '保持联系', connectText: '可在 GitHub 上查看我的项目和公开资料。', profile: 'GitHub 个人资料',
-    resources: '研究工具', backup: 'ABM 备份说明', privacy: '隐私政策', translation: 'AI 翻译 · 查看英文原文',
+    resources: '研究工具', backup: 'ABM 备份说明', privacy: '隐私政策',
   },
   es: {
     language: 'Idioma', skip: 'Ir al contenido', about: 'Filosofía', research: 'Investigación', contact: 'Contacto',
@@ -69,7 +69,6 @@ export const copy: Record<Language, Copy> = {
     abm: 'Modelado basado en agentes', abmText: 'Mis intereses de investigación incluyen el modelado basado en agentes (ABM).',
     connect: 'Sigamos en contacto', connectText: 'Encuentra mis proyectos y mi perfil público en GitHub.', profile: 'Perfil de GitHub',
     resources: 'Herramientas de investigación', backup: 'Información sobre copias de seguridad de ABM', privacy: 'Política de privacidad',
-    translation: 'Traducción por IA · Ver el original en inglés',
   },
   fr: {
     language: 'Langue', skip: 'Aller au contenu', about: 'Philosophie', research: 'Recherche', contact: 'Contact',
@@ -81,7 +80,6 @@ export const copy: Record<Language, Copy> = {
     abm: 'Modélisation à base d’agents', abmText: 'Mes intérêts de recherche comprennent la modélisation à base d’agents (ABM).',
     connect: 'Restons en contact', connectText: 'Retrouvez mes projets et mon profil public sur GitHub.', profile: 'Profil GitHub',
     resources: 'Outils de recherche', backup: 'Informations sur la sauvegarde ABM', privacy: 'Politique de confidentialité',
-    translation: 'Traduction par IA · Voir l’original anglais',
   },
   ru: {
     language: 'Язык', skip: 'Перейти к содержанию', about: 'Философия', research: 'Исследования', contact: 'Контакты',
@@ -93,7 +91,6 @@ export const copy: Record<Language, Copy> = {
     abm: 'Агентное моделирование', abmText: 'Мои исследовательские интересы включают агентное моделирование (ABM).',
     connect: 'Оставайтесь на связи', connectText: 'Мои проекты и открытый профиль доступны на GitHub.', profile: 'Профиль GitHub',
     resources: 'Исследовательские инструменты', backup: 'О резервном копировании ABM', privacy: 'Политика конфиденциальности',
-    translation: 'Перевод с помощью ИИ · Оригинал на английском',
   },
   ar: {
     language: 'اللغة', skip: 'انتقل إلى المحتوى', about: 'الفلسفة', research: 'البحث', contact: 'التواصل',
@@ -104,7 +101,6 @@ export const copy: Record<Language, Copy> = {
     abm: 'النمذجة القائمة على الوكلاء', abmText: 'تشمل اهتماماتي البحثية النمذجة القائمة على الوكلاء (ABM).',
     connect: 'لنبقَ على تواصل', connectText: 'يمكنك الاطلاع على مشاريعي وملفي العام على GitHub.', profile: 'الملف الشخصي على GitHub',
     resources: 'أدوات البحث', backup: 'معلومات النسخ الاحتياطي لأبحاث ABM', privacy: 'سياسة الخصوصية',
-    translation: 'ترجمة بالذكاء الاصطناعي · عرض الأصل الإنجليزي',
   },
   ja: {
     language: '言語', skip: '本文へ移動', about: '理念', research: '研究', contact: '連絡先',
@@ -115,7 +111,6 @@ export const copy: Record<Language, Copy> = {
     abm: 'エージェントベース・モデリング', abmText: '研究関心には、エージェントベース・モデリング（ABM）が含まれます。',
     connect: 'つながる', connectText: 'プロジェクトと公開プロフィールは GitHub でご覧いただけます。', profile: 'GitHub プロフィール',
     resources: '研究ツール', backup: 'ABM バックアップの案内', privacy: 'プライバシーポリシー',
-    translation: 'AI 翻訳 · 英語の原文を見る',
   },
   de: {
     language: 'Sprache', skip: 'Zum Inhalt', about: 'Philosophie', research: 'Forschung', contact: 'Kontakt',
@@ -127,7 +122,6 @@ export const copy: Record<Language, Copy> = {
     abm: 'Agentenbasierte Modellierung', abmText: 'Zu meinen Forschungsinteressen gehört die agentenbasierte Modellierung (ABM).',
     connect: 'In Kontakt bleiben', connectText: 'Meine Projekte und mein öffentliches Profil finden Sie auf GitHub.', profile: 'GitHub-Profil',
     resources: 'Forschungswerkzeuge', backup: 'Informationen zur ABM-Datensicherung', privacy: 'Datenschutzerklärung',
-    translation: 'KI-Übersetzung · Englisches Original ansehen',
   },
   fa: {
     language: 'زبان', skip: 'رفتن به محتوا', about: 'فلسفه', research: 'پژوهش', contact: 'ارتباط',
@@ -138,6 +132,5 @@ export const copy: Record<Language, Copy> = {
     abm: 'مدل‌سازی مبتنی بر عامل', abmText: 'علایق پژوهشی من شامل مدل‌سازی مبتنی بر عامل (ABM) است.',
     connect: 'در ارتباط باشیم', connectText: 'پروژه‌ها و نمایهٔ عمومی من را در GitHub ببینید.', profile: 'نمایهٔ GitHub',
     resources: 'ابزارهای پژوهش', backup: 'اطلاعات پشتیبان‌گیری ABM', privacy: 'سیاست حریم خصوصی',
-    translation: 'ترجمه با هوش مصنوعی · مشاهدهٔ متن اصلی انگلیسی',
   },
 };

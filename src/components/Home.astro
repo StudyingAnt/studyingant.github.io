@@ -2,32 +2,38 @@
 import Base from '../layouts/Base.astro';
 import { copy, pagePath, type Language } from '../data/languages';
 import { sections } from '../data/sections';
-import { profile, publications } from '../data/profile';
+import { profile, publications, displayName } from '../data/profile';
 import { academic } from '../data/academic';
+import { introduction } from '../data/introduction';
 import { notes, getNote } from '../data/writing';
 interface Props { lang: Language; }
 const { lang } = Astro.props;
 const t = copy[lang];
 const s = sections[lang];
 const a = academic[lang];
+const intro = introduction[lang];
 ---
-<Base lang={lang} title={profile.name} description={a.lead} translated>
-  <section class="hero" aria-labelledby="name">
-    <p class="eyebrow">{s.site}</p>
-    <h1 id="name" lang="en" dir="ltr">{profile.name}</h1>
-    <p class="position">{a.role}<span lang="en" dir="ltr">Stony Brook University</span></p>
-    <p class="research-focus">{a.focus}</p>
-    <p class="intro">{a.lead}</p>
-    {lang !== 'en' && <a class="translation-note" href="/">{t.translation}</a>}
-    <div class="hero-actions">
-      <a class="text-link" href="#research">{t.research} <span aria-hidden="true">↓</span></a>
-      <a class="text-link" href="#writing">{s.writing} <span aria-hidden="true">↓</span></a>
+<Base lang={lang} title={displayName(lang)} description={intro.biography[0]} translated>
+  <section class="hero about-hero" id="about" aria-labelledby="name">
+    <div class="portrait-placeholder" role="img" aria-label={intro.portrait}>
+      <svg viewBox="0 0 80 90" fill="none" aria-hidden="true"><circle cx="40" cy="27" r="15" /><path d="M12 78v-9a28 28 0 0 1 56 0v9" /></svg>
+      <span>{intro.portrait}</span>
+    </div>
+    <div class="about-copy">
+      <p class="greeting">{intro.greeting}</p>
+      <h1 id="name" lang={lang === 'ko' ? 'ko' : 'en'} dir="ltr">{displayName(lang)}</h1>
+      <p class="position">{a.role}<span lang="en" dir="ltr">Stony Brook University</span></p>
+      <div class="biography">{intro.biography.map((paragraph) => <p>{paragraph}</p>)}</div>
+      <div class="hero-actions">
+        <a class="text-link" href="#research">{t.research} <span aria-hidden="true">↓</span></a>
+        <a class="text-link" href="#writing">{s.writing} <span aria-hidden="true">↓</span></a>
+      </div>
     </div>
   </section>
   <section class="section-row" id="research" aria-labelledby="research-title">
     <div class="section-label"><span aria-hidden="true">01</span><h2 id="research-title">{t.research}</h2></div>
     <div class="section-content">
-      <h3>{a.overview}</h3><p>{a.question}</p>
+      <h3>{a.overview}</h3><p>{a.question}</p><p>{intro.researchDetail}</p>
       <ul class="research-methods">
         <li><span class="topic-label" lang="en">snMultiome</span><h4>{a.multiome}</h4><p>{a.multiomeText}</p></li>
         <li><span class="topic-label" lang="en">ABM</span><h4>{a.modeling}</h4><p>{a.modelingText}</p></li>
@@ -36,11 +42,10 @@ const a = academic[lang];
       <div class="publications" id="publications"><h4>{a.publications}</h4><ul>{publications.map((publication) => <li><a href={`https://doi.org/${publication.doi}`} lang="en">{publication.title}</a><span lang="en" dir="ltr">{publication.venue} · {publication.year}</span></li>)}</ul></div>
     </div>
   </section>
-  <section class="section-row" id="about" aria-labelledby="about-title">
-    <div class="section-label"><span aria-hidden="true">02</span><h2 id="about-title">{s.about}</h2></div>
+  <section class="section-row" id="background" aria-labelledby="background-title">
+    <div class="section-label"><span aria-hidden="true">02</span><h2 id="background-title">{s.career}</h2></div>
     <div class="section-content">
-      <p>{a.about}</p>
-      {profile.career.length > 0 && <div class="career"><h3>{s.career}</h3><dl>{profile.career.map((entry) => <div><dt dir="ltr">{entry.period}</dt><dd><strong>{a[entry.degree]}</strong><span lang="en" dir="ltr">{entry.institution}</span></dd></div>)}</dl></div>}
+      {profile.career.length > 0 && <div class="career"><dl>{profile.career.map((entry) => <div><dt dir="ltr">{entry.period}</dt><dd><strong>{a[entry.degree]}</strong><span lang="en" dir="ltr">{entry.institution}</span></dd></div>)}</dl></div>}
     </div>
   </section>
   <section class="section-row" id="writing" aria-labelledby="writing-title">
@@ -62,7 +67,7 @@ const a = academic[lang];
   </section>
   <section class="section-row" id="interests" aria-labelledby="interests-title">
     <div class="section-label"><span aria-hidden="true">05</span><h2 id="interests-title">{a.interests}</h2></div>
-    <div class="section-content"><p>{a.interestsText}</p><a class="text-link" href={profile.worldbuildingSite.url}>{a.worldbuilding} · <span lang="en">{profile.worldbuildingSite.title}</span> <span aria-hidden="true">↗</span></a></div>
+    <div class="section-content"><p>{intro.interests}</p><a class="text-link" href={profile.worldbuildingSite.url}>{a.worldbuilding} · <span lang="en">{profile.worldbuildingSite.title}</span> <span aria-hidden="true">↗</span></a></div>
   </section>
   <section class="section-row contact-row" id="contact" aria-labelledby="contact-title">
     <div class="section-label"><span aria-hidden="true">06</span><h2 id="contact-title">{t.contact}</h2></div>
