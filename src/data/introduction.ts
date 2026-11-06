@@ -22,7 +22,7 @@ export const introduction: Record<Language, Introduction> = {
     interests: '과학철학과 글쓰기, 언어 배우기를 좋아합니다. 과학을 바라보는 생각부터 일상의 관심사와 취미까지 이곳에 글로 남기려 합니다. 세계관 제작은 Khartllan이라는 별도 공간에서 이어갑니다.',
   },
   en: {
-    greeting: 'Hello, I do science and write.', navigation: 'Main navigation',
+    greeting: 'Hi, I’m a scientist and a writer.', navigation: 'Main navigation',
     biography: [
       'I’m a computational biologist interested in the underlying structures and principles of evolution, particularly the relationship between robustness and evolvability. I approach these questions through mathematics and computation.',
       'I currently study cancer evolution, combining single-nucleus multiome analysis and agent-based modeling to explore how environments that change over time affect the diversity and phenotypes of cancer cell populations.',
