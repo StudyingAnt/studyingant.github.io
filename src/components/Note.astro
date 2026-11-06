@@ -1,0 +1,20 @@
+---
+import Base from '../layouts/Base.astro';
+import { copy, homePath, type Language } from '../data/languages';
+import { sections } from '../data/sections';
+import { getNote, type NoteSlug } from '../data/writing';
+import { profile } from '../data/profile';
+interface Props { lang: Language; slug: NoteSlug; }
+const { lang, slug } = Astro.props;
+const note = getNote(slug, lang);
+const localizedPath = `writing/${slug}/`;
+---
+<Base lang={lang} title={`${note.title} | ${profile.name}`} description={note.description} translated localizedPath={localizedPath}>
+  <article class="prose note-prose">
+    <a class="back-link" href={`${homePath(lang)}#writing`}>← {sections[lang].back}</a>
+    <p class="eyebrow">{copy[lang].about}</p>
+    <h1>{note.title}</h1>
+    {lang !== 'en' && <a class="translation-note" href={`/${localizedPath}`}>{copy[lang].translation}</a>}
+    {note.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+  </article>
+</Base>

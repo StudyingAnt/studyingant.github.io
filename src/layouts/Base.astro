@@ -1,10 +1,19 @@
 ---
 import '../styles/global.css';
-import { languages, copy, homePath, type Language } from '../data/languages';
+import '@fontsource-variable/noto-sans';
+import '@fontsource-variable/noto-sans-kr';
+import '@fontsource-variable/noto-sans-sc';
+import '@fontsource-variable/noto-sans-jp';
+import '@fontsource-variable/noto-sans-arabic';
+import { languages, copy, homePath, pagePath, type Language } from '../data/languages';
+import { sections } from '../data/sections';
+import { profile } from '../data/profile';
+import { academic } from '../data/academic';
 
-interface Props { lang?: Language; title: string; description: string; translated?: boolean; }
-const { lang = 'en', title, description, translated = false } = Astro.props;
+interface Props { lang?: Language; title: string; description: string; translated?: boolean; localizedPath?: string; }
+const { lang = 'en', title, description, translated = false, localizedPath = '' } = Astro.props;
 const t = copy[lang];
+const s = sections[lang];
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 <!doctype html>
@@ -17,8 +26,8 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <title>{title}</title>
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    {translated && languages.map((language) => <link rel="alternate" hreflang={language.code === 'zh' ? 'zh-CN' : language.code} href={new URL(homePath(language.code), Astro.site)} />)}
-    {translated && <link rel="alternate" hreflang="x-default" href={Astro.site} />}
+    {translated && languages.map((language) => <link rel="alternate" hreflang={language.code === 'zh' ? 'zh-CN' : language.code} href={new URL(pagePath(language.code, localizedPath), Astro.site)} />)}
+    {translated && <link rel="alternate" hreflang="x-default" href={new URL(pagePath('en', localizedPath), Astro.site)} />}
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -28,25 +37,28 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <a class="skip-link" href="#main">{t.skip}</a>
     <div class="shell">
       <header class="site-header">
-        <a class="identity" href={homePath(lang)} aria-label="Joon Hyun Song — home">
+        <a class="identity" href={homePath(lang)} aria-label={`${profile.name} — home`}>
           <span class="monogram" aria-hidden="true">S<span>·</span></span>
-          <span lang="en" dir="ltr">Joon Hyun Song</span>
+          <span lang="en" dir="ltr">{profile.name}</span>
         </a>
-        <nav aria-label={t.about}>
-          <a href={`${homePath(lang)}#philosophy`}>{t.about}</a>
+        <nav aria-label={s.site}>
           <a href={`${homePath(lang)}#research`}>{t.research}</a>
+          <a href={`${homePath(lang)}#about`}>{s.about}</a>
+          <a href={`${homePath(lang)}#writing`}>{s.writing}</a>
+          <a href={`${homePath(lang)}#philosophy`}>{t.about}</a>
+          <a href={`${homePath(lang)}#interests`}>{academic[lang].interests}</a>
           <a href={`${homePath(lang)}#contact`}>{t.contact}</a>
         </nav>
         {translated && <div class="language-picker">
           <label for="language">{t.language}</label>
           <select id="language" aria-label={t.language}>
-            {languages.map((language) => <option value={homePath(language.code)} lang={language.code} selected={language.code === lang}>{language.name}</option>)}
+            {languages.map((language) => <option value={pagePath(language.code, localizedPath)} lang={language.code} selected={language.code === lang}>{language.name}</option>)}
           </select>
         </div>}
       </header>
       <main id="main" tabindex="-1"><slot /></main>
       <footer>
-        <div><span class="footer-name" lang="en" dir="ltr">Joon Hyun Song</span><span class="footer-motto" lang="en">Humanity in Science, Science for Humanity.</span></div>
+        <div><span class="footer-name" lang="en" dir="ltr">{profile.name}</span><span class="footer-motto" lang="en">Humanity in Science, Science for Humanity.</span></div>
         <div class="footer-links">
           <a href="/abm-backup/">{t.backup}<span class="english-label">EN</span></a>
           <a href="/abm-backup/privacy/">{t.privacy}<span class="english-label">EN</span></a>

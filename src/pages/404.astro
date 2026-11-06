@@ -1,6 +1,7 @@
 ---
+import { profile } from '../data/profile';
 import Base from '../layouts/Base.astro';
 ---
-<Base title="Page not found | Joon Hyun Song" description="This page could not be found.">
+<Base title={`Page not found | ${profile.name}`} description="This page could not be found.">
   <section class="prose"><p class="eyebrow">404</p><h1>Page not found</h1><p>The page may have moved, or the address may be incomplete.</p><a class="text-link" href="/">Return home →</a></section>
 </Base>

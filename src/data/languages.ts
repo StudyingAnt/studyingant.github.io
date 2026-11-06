@@ -13,6 +13,7 @@ export const languages = [
 
 export type Language = (typeof languages)[number]['code'];
 export const homePath = (lang: Language) => lang === 'en' ? '/' : `/${lang}/`;
+export const pagePath = (lang: Language, path: string) => `${homePath(lang)}${path}`;
 
 type Copy = {
   language: string; skip: string; about: string; research: string; contact: string;

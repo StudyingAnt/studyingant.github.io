@@ -1,0 +1,12 @@
+---
+import Note from '../../../../components/Note.astro';
+import { languages } from '../../../../data/languages';
+import { notes } from '../../../../data/writing';
+export function getStaticPaths() {
+  return languages.filter((language) => language.code !== 'en').flatMap((language) =>
+    notes.map((note) => ({ params: { lang: language.code, slug: note.slug }, props: { lang: language.code, slug: note.slug } })),
+  );
+}
+const { lang, slug } = Astro.props;
+---
+<Note lang={lang} slug={slug} />
