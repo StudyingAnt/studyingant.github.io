@@ -4,7 +4,7 @@ type AcademicCopy = {
   role: string; department: string; track: string; lead: string; focus: string; overview: string; question: string;
   multiome: string; multiomeText: string; modeling: string; modelingText: string;
   theory: string; theoryText: string; about: string; phd: string; masters: string;
-  bachelors: string; publications: string; interests: string; interestsText: string;
+  bachelors: string; interests: string; interestsText: string;
   worldbuilding: string; email: string;
 };
 
@@ -21,7 +21,7 @@ export const academic: Record<Language, AcademicCopy> = {
     theory: 'Mathematical perspectives on evolution', theoryText: 'Quantitative approaches to robustness, evolvability, and adaptation across biological scales.',
     about: 'I am a Ph.D. student in Applied Mathematics and Statistics at Stony Brook University. My background spans life science and electrical engineering.',
     phd: "Ph.D. student in Applied Mathematics and Statistics", masters: 'M.Sc. in Life Science', bachelors: 'B.Sc. in Life Science & B.Eng. in Electrical Engineering',
-    publications: 'Selected publications', interests: 'Interests', interestsText: 'Alongside research, I write about the philosophy of science and other personal interests. Worldbuilding lives on its own site.',
+    interests: 'Interests', interestsText: 'Alongside research, I write about the philosophy of science and other personal interests. Worldbuilding lives on its own site.',
     worldbuilding: 'Worldbuilding', email: 'Email',
   },
   ko: {
@@ -34,7 +34,7 @@ export const academic: Record<Language, AcademicCopy> = {
     theory: '진화에 대한 수학적 관점', theoryText: '생물학적 규모를 넘나들며 강건성, 진화가능성, 적응을 정량적으로 이해하고자 합니다.',
     about: 'Stony Brook University에서 응용수학 및 통계학 박사과정에 재학 중입니다. 생명과학과 전자공학을 공부했습니다.',
     phd: "응용수학 및 통계학 박사과정", masters: '생명과학 석사', bachelors: '생명과학 학사 및 전자공학 학사',
-    publications: '주요 논문', interests: '관심사', interestsText: '연구와 함께 과학철학과 개인적인 관심사에 관한 글을 이곳에 모읍니다. 세계관 제작은 별도 사이트에서 다룹니다.',
+    interests: '관심사', interestsText: '연구와 함께 과학철학과 개인적인 관심사에 관한 글을 이곳에 모읍니다. 세계관 제작은 별도 사이트에서 다룹니다.',
     worldbuilding: '세계관 제작', email: '이메일',
   },
   zh: {
@@ -45,7 +45,7 @@ export const academic: Record<Language, AcademicCopy> = {
     theory: '演化的数学视角', theoryText: '以定量方法研究不同生物尺度上的稳健性、可演化性与适应。',
     about: '我在 Stony Brook University 攻读应用数学与统计学博士，具有生命科学与电子工程的学习背景。',
     phd: "应用数学与统计学博士在读", masters: '生命科学理学硕士', bachelors: '生命科学理学学士与电子工程工学学士',
-    publications: '精选论文', interests: '兴趣', interestsText: '除研究外，我也在这里写科学哲学与个人兴趣。世界观创作放在独立网站上。', worldbuilding: '世界观创作', email: '电子邮件',
+    interests: '兴趣', interestsText: '除研究外，我也在这里写科学哲学与个人兴趣。世界观创作放在独立网站上。', worldbuilding: '世界观创作', email: '电子邮件',
   },
   es: {
     role: "Estudiante de doctorado", department: "Departamento de Matemáticas Aplicadas y Estadística", track: "Especialidad en Biología Computacional", lead: 'Estudio la robustez y la capacidad evolutiva del cáncer mediante enfoques matemáticos y computacionales para comprender la adaptación de las poblaciones celulares.',
@@ -55,7 +55,7 @@ export const academic: Record<Language, AcademicCopy> = {
     theory: 'Perspectivas matemáticas de la evolución', theoryText: 'Enfoques cuantitativos de la robustez, la capacidad evolutiva y la adaptación a distintas escalas biológicas.',
     about: 'Soy estudiante de doctorado en Matemáticas Aplicadas y Estadística en Stony Brook University. Mi formación abarca ciencias de la vida e ingeniería eléctrica.',
     phd: "Estudiante de doctorado en Matemáticas Aplicadas y Estadística", masters: 'Máster en Ciencias de la Vida', bachelors: 'Grados en Ciencias de la Vida e Ingeniería Eléctrica',
-    publications: 'Publicaciones seleccionadas', interests: 'Intereses', interestsText: 'Además de investigar, escribo aquí sobre filosofía de la ciencia y otros intereses personales. La creación de mundos tiene su propio sitio.', worldbuilding: 'Creación de mundos', email: 'Correo electrónico',
+    interests: 'Intereses', interestsText: 'Además de investigar, escribo aquí sobre filosofía de la ciencia y otros intereses personales. La creación de mundos tiene su propio sitio.', worldbuilding: 'Creación de mundos', email: 'Correo electrónico',
   },
   fr: {
     role: "Doctorant", department: "Département de mathématiques appliquées et de statistiques", track: "Parcours de biologie computationnelle", lead: 'J’étudie la robustesse et l’évolvabilité du cancer par des approches mathématiques et informatiques pour comprendre l’adaptation des populations cellulaires.',
@@ -65,7 +65,7 @@ export const academic: Record<Language, AcademicCopy> = {
     theory: 'Perspectives mathématiques sur l’évolution', theoryText: 'Approches quantitatives de la robustesse, de l’évolvabilité et de l’adaptation à différentes échelles biologiques.',
     about: 'Je suis doctorant en mathématiques appliquées et statistiques à Stony Brook University. Ma formation couvre les sciences de la vie et le génie électrique.',
     phd: "Doctorant en mathématiques appliquées et statistiques", masters: 'Master en sciences de la vie', bachelors: 'Diplômes de premier cycle en sciences de la vie et génie électrique',
-    publications: 'Publications sélectionnées', interests: 'Centres d’intérêt', interestsText: 'Outre la recherche, j’écris ici sur la philosophie des sciences et mes autres centres d’intérêt. La création de mondes a son propre site.', worldbuilding: 'Création de mondes', email: 'Courriel',
+    interests: 'Centres d’intérêt', interestsText: 'Outre la recherche, j’écris ici sur la philosophie des sciences et mes autres centres d’intérêt. La création de mondes a son propre site.', worldbuilding: 'Création de mondes', email: 'Courriel',
   },
   ru: {
     role: "Аспирант", department: "Кафедра прикладной математики и статистики", track: "Направление: вычислительная биология", lead: 'Я изучаю устойчивость и эволюционируемость рака, используя математические и вычислительные подходы для понимания адаптации клеточных популяций.',
@@ -75,7 +75,7 @@ export const academic: Record<Language, AcademicCopy> = {
     theory: 'Математический взгляд на эволюцию', theoryText: 'Количественные подходы к устойчивости, эволюционируемости и адаптации на разных биологических уровнях.',
     about: 'Я учусь в аспирантуре по прикладной математике и статистике в Stony Brook University. Моё образование связано с науками о жизни и электротехникой.',
     phd: "Аспирант по прикладной математике и статистике", masters: 'Магистр наук о жизни', bachelors: 'Бакалавр наук о жизни и бакалавр электротехники',
-    publications: 'Избранные публикации', interests: 'Интересы', interestsText: 'Помимо исследований, я пишу здесь о философии науки и личных интересах. Создание вымышленных миров вынесено на отдельный сайт.', worldbuilding: 'Создание вымышленных миров', email: 'Электронная почта',
+    interests: 'Интересы', interestsText: 'Помимо исследований, я пишу здесь о философии науки и личных интересах. Создание вымышленных миров вынесено на отдельный сайт.', worldbuilding: 'Создание вымышленных миров', email: 'Электронная почта',
   },
   ar: {
     role: "طالب دكتوراه", department: "قسم الرياضيات التطبيقية والإحصاء", track: "مسار علم الأحياء الحاسوبي", lead: 'أدرس المتانة والقابلية للتطور في السرطان باستخدام مناهج رياضية وحاسوبية لفهم كيفية تكيّف تجمعات الخلايا.',
@@ -85,7 +85,7 @@ export const academic: Record<Language, AcademicCopy> = {
     theory: 'منظورات رياضية للتطور', theoryText: 'مناهج كمية للمتانة والقابلية للتطور والتكيف عبر المقاييس البيولوجية.',
     about: 'أنا طالب دكتوراه في الرياضيات التطبيقية والإحصاء في Stony Brook University. تشمل خلفيتي علوم الحياة والهندسة الكهربائية.',
     phd: "طالب دكتوراه في الرياضيات التطبيقية والإحصاء", masters: 'ماجستير في علوم الحياة', bachelors: 'بكالوريوس في علوم الحياة وبكالوريوس في الهندسة الكهربائية',
-    publications: 'منشورات مختارة', interests: 'اهتمامات', interestsText: 'إلى جانب البحث، أكتب هنا عن فلسفة العلم واهتماماتي الشخصية. لبناء العوالم الخيالية موقع مستقل.', worldbuilding: 'بناء العوالم الخيالية', email: 'البريد الإلكتروني',
+    interests: 'اهتمامات', interestsText: 'إلى جانب البحث، أكتب هنا عن فلسفة العلم واهتماماتي الشخصية. لبناء العوالم الخيالية موقع مستقل.', worldbuilding: 'بناء العوالم الخيالية', email: 'البريد الإلكتروني',
   },
   ja: {
     role: "博士課程", department: "応用数学・統計学科", track: "計算生物学トラック", lead: 'がんの進化における頑健性と進化可能性を研究し、数学的・計算的手法で細胞集団の適応を理解することを目指しています。',
@@ -95,7 +95,7 @@ export const academic: Record<Language, AcademicCopy> = {
     theory: '進化への数学的視点', theoryText: '生物学的なスケールをまたいで頑健性、進化可能性、適応を定量的に考えます。',
     about: 'Stony Brook University の応用数学・統計学博士課程に在籍しています。生命科学と電気工学を学びました。',
     phd: "応用数学・統計学博士課程", masters: '生命科学修士', bachelors: '生命科学学士・電気工学学士',
-    publications: '主な論文', interests: '関心', interestsText: '研究のほか、科学哲学や個人的な関心についてもここに書きます。世界観の創作は別のサイトで扱います。', worldbuilding: '世界観の創作', email: 'メール',
+    interests: '関心', interestsText: '研究のほか、科学哲学や個人的な関心についてもここに書きます。世界観の創作は別のサイトで扱います。', worldbuilding: '世界観の創作', email: 'メール',
   },
   de: {
     role: "Doktorand", department: "Fachbereich Angewandte Mathematik und Statistik", track: "Schwerpunkt Computerbiologie", lead: 'Ich untersuche Robustheit und Evolvierbarkeit bei Krebs und nutze mathematische und computergestützte Ansätze, um die Anpassung von Zellpopulationen zu verstehen.',
@@ -105,7 +105,7 @@ export const academic: Record<Language, AcademicCopy> = {
     theory: 'Mathematische Perspektiven auf Evolution', theoryText: 'Quantitative Ansätze zu Robustheit, Evolvierbarkeit und Anpassung über biologische Skalen hinweg.',
     about: 'Ich promoviere in Angewandter Mathematik und Statistik an der Stony Brook University. Mein Hintergrund umfasst Biowissenschaften und Elektrotechnik.',
     phd: "Doktorand in Angewandter Mathematik und Statistik", masters: 'M.Sc. in Biowissenschaften', bachelors: 'B.Sc. in Biowissenschaften und B.Eng. in Elektrotechnik',
-    publications: 'Ausgewählte Publikationen', interests: 'Interessen', interestsText: 'Neben der Forschung schreibe ich hier über Wissenschaftsphilosophie und persönliche Interessen. Weltenbau hat eine eigene Website.', worldbuilding: 'Weltenbau', email: 'E-Mail',
+    interests: 'Interessen', interestsText: 'Neben der Forschung schreibe ich hier über Wissenschaftsphilosophie und persönliche Interessen. Weltenbau hat eine eigene Website.', worldbuilding: 'Weltenbau', email: 'E-Mail',
   },
   fa: {
     role: "دانشجوی دکتری", department: "گروه ریاضیات کاربردی و آمار", track: "گرایش زیست‌شناسی محاسباتی", lead: 'استواری و تکامل‌پذیری در سرطان را با رویکردهای ریاضی و محاسباتی بررسی می‌کنم تا سازگاری جمعیت‌های سلولی را درک کنم.',
@@ -115,6 +115,6 @@ export const academic: Record<Language, AcademicCopy> = {
     theory: 'دیدگاه‌های ریاضی دربارهٔ تکامل', theoryText: 'رویکردهای کمی به استواری، تکامل‌پذیری و سازگاری در مقیاس‌های زیستی.',
     about: 'دانشجوی دکتری ریاضیات کاربردی و آمار در Stony Brook University هستم. پیشینهٔ تحصیلی من علوم زیستی و مهندسی برق را در بر می‌گیرد.',
     phd: "دانشجوی دکتری ریاضیات کاربردی و آمار", masters: 'کارشناسی ارشد علوم زیستی', bachelors: 'کارشناسی علوم زیستی و کارشناسی مهندسی برق',
-    publications: 'مقاله‌های منتخب', interests: 'علایق', interestsText: 'در کنار پژوهش، اینجا دربارهٔ فلسفهٔ علم و علایق شخصی می‌نویسم. جهان‌سازی در وب‌سایتی جداگانه است.', worldbuilding: 'جهان‌سازی', email: 'ایمیل',
+    interests: 'علایق', interestsText: 'در کنار پژوهش، اینجا دربارهٔ فلسفهٔ علم و علایق شخصی می‌نویسم. جهان‌سازی در وب‌سایتی جداگانه است.', worldbuilding: 'جهان‌سازی', email: 'ایمیل',
   },
 };

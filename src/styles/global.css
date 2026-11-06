@@ -106,9 +106,6 @@ button, input, textarea, code, pre, kbd, samp { font-family: inherit; }
 h4 { font-size: 17px; line-height: 1.7; font-weight: 600; margin: 0 0 10px; overflow-wrap: anywhere; }
 .research-methods p { font-size: 14px; }
 .publications { margin-top: 34px; scroll-margin-top: 30px; }
-.publications ul { list-style: none; padding: 0; margin: 0; }
-.publications li { padding-block: 16px; border-top: 1px solid var(--line); font-size: 14px; line-height: 1.8; }
-.publications li > span { display: block; font-size: 12px; color: var(--muted); margin-top: 8px; }
 .contact-links { display: flex; gap: 16px 24px; flex-wrap: wrap; }
 .section-content { min-width: 0; }
 
@@ -137,3 +134,14 @@ html[lang="ko"] { word-break: keep-all; }
 
 .position .track-link { text-underline-offset: 3px; }
 .career .track-link { display: block; font-size: 14px; line-height: 1.8; margin-top: 6px; }
+
+.citation-list { list-style: none; padding: 0; margin: 0; }
+.citation-item { border-top: 1px solid var(--line); padding-block: 20px; }
+.citation-title { font-size: 15px; font-weight: 600; line-height: 1.75; margin: 0; overflow-wrap: anywhere; }
+.section-content .citation-authors { font-size: 14px; font-weight: 400; line-height: 1.9; margin-block: 10px 12px; color: var(--body); overflow-wrap: anywhere; }
+.author-owner { font-weight: 750; color: var(--ink); }
+.citation-authors sup { font-size: 10px; margin-inline-start: 1px; }
+.citation-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 7px 14px; font-size: 12px; line-height: 1.7; color: var(--muted); }
+.citation-meta cite { font-style: normal; }
+.author-role { border: 1px solid var(--line); padding: 2px 7px; border-radius: 3px; color: var(--body); font-size: 11px; }
+.section-content .citation-legend { font-size: 12px; line-height: 1.8; color: var(--muted); margin: 0; }
