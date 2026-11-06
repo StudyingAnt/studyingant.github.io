@@ -34,9 +34,17 @@ Playwright may need `npx playwright install --with-deps chromium`.
   interests in ten languages. Broad directions are based on owner-supplied
   sources; no unpublished results or report extracts are published.
 - `src/data/introduction.ts`: Korean-source greeting, lab-profile-based biography,
-  photo-placeholder labels, and expanded research directions in ten languages.
+  expanded research directions in ten languages.
   About leads the page; detailed research, background, writing, scientific
-  philosophy, and personal interests follow. No portrait is published yet.
+  philosophy, and personal interests follow.
+- `public/images/joon-hyun-song.jpg`: the owner-approved 1080×1350 portrait,
+  served locally at its natural 4:5 proportions. Original photo retrieved from
+  the owner's [lab profile](https://renaissance.stonybrookmedicine.edu/damaghi-lab/research_team)
+  and used unchanged. No AI image editing or external image hotlinking is used.
+- The Ph.D. entry denotes a current student in Applied Mathematics and Statistics,
+  with Computational Biology shown as a track. The full department name is
+  Department of Applied Mathematics and Statistics. The track is verified in the
+  [official program](https://www.stonybrook.edu/ams/academics/graduate/computational-biology.html).
 - `src/data/sections.ts`: section labels and short-note descriptions.
 - `src/data/translation.ts`: persistent AI-translation notices for the eight
   languages other than Korean and English, linked to matching reference pages.

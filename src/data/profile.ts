@@ -4,6 +4,9 @@ import type { Language } from './languages';
 export const profile: {
   name: string;
   koreanName: string;
+  portrait: string;
+  departmentUrl: string;
+  trackUrl: string;
   email: string;
   orcid: string;
   career: { period: string; degree: 'phd' | 'masters' | 'bachelors'; institution: string }[];
@@ -11,6 +14,9 @@ export const profile: {
 } = {
   name: 'Joon-Hyun Song',
   koreanName: '송준현',
+  portrait: '/images/joon-hyun-song.jpg',
+  departmentUrl: 'https://www.stonybrook.edu/ams/',
+  trackUrl: 'https://www.stonybrook.edu/ams/academics/graduate/computational-biology.html',
   email: 'joon-hyun.song@stonybrook.edu',
   orcid: '0000-0002-0085-4888',
   career: [
