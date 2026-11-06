@@ -1,0 +1,7 @@
+---
+import Base from '../../layouts/Base.astro';
+import { Content, frontmatter } from '../../../content/abm-backup/index.md';
+---
+<Base title={`${frontmatter.title} | Joon Hyun Song`} description={frontmatter.description}>
+  <article class="prose"><a class="back-link" href="/">← Home</a><Content /></article>
+</Base>
