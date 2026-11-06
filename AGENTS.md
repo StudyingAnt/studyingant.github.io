@@ -21,6 +21,20 @@
   invented biography, publications, affiliations, metrics, or contact details.
 - Use a pure white (`#ffffff`) page background, as requested by the owner.
   Do not replace it with cream, ivory, or other warm off-white backgrounds.
+- Use self-hosted Noto Sans throughout, including headings, navigation, and
+  policy pages. Use Noto Sans KR/SC/JP and Noto Sans Arabic for the corresponding
+  scripts; keep font license notices in `public/fonts/licenses/`.
+- Lead the homepage with the owner's name and research interests. Put career,
+  scientific philosophy, and short writing below that. Add only owner-supplied
+  career facts to `src/data/profile.ts`; empty career data stays hidden.
+- Personal interests and hobbies belong on this site, except worldbuilding.
+  Worldbuilding is linked only through `profile.worldbuildingSite` to
+  https://www.khartllan.com/; do not publish worldbuilding material here.
+- The owner is currently a Ph.D. student, not a completed Ph.D. or an assumed
+  doctoral candidate. Career and published citations come from the supplied CV.
+  The private preliminary report is reference-only for broad research interests;
+  do not commit its PDF, extracted text, figures, unpublished findings, or detailed
+  hypotheses. Do not publish the CV PDF, phone number, or referees' contact data.
 - Protect `/abm-backup/` and `/abm-backup/privacy/`, their English original files
   under `content/abm-backup/`, policy links, application identity, and domain.
   These are OAuth documentation pages, not a public backup service. Do not alter

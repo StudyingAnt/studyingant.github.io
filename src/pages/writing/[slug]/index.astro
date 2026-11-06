@@ -1,0 +1,9 @@
+---
+import Note from '../../../components/Note.astro';
+import { notes } from '../../../data/writing';
+export function getStaticPaths() {
+  return notes.map((note) => ({ params: { slug: note.slug }, props: { slug: note.slug } }));
+}
+const { slug } = Astro.props;
+---
+<Note lang="en" slug={slug} />

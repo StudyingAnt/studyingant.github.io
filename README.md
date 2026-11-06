@@ -27,18 +27,34 @@ Playwright may need `npx playwright install --with-deps chromium`.
 ## Content and languages
 
 - `src/components/Home.astro`: homepage structure.
+- `src/data/profile.ts`: CV-backed name, education, published works, professional
+  email, ORCID, and the external Khartllan link. Personal interests/hobbies belong
+  here; only worldbuilding belongs off this site. Do not invent biographical facts.
+- `src/data/academic.ts`: research interests, methods, degree labels, and personal
+  interests in ten languages. Broad directions are based on owner-supplied
+  sources; no unpublished results or report extracts are published.
+- `src/data/sections.ts`: section labels and short-note descriptions. Research
+  leads; career, philosophy, personal interests, and short writing follow.
+- `src/data/writing.ts`: short notes with localized content. The first note uses
+  the owner's existing two philosophical principles. Notes have static routes
+  at `/writing/<slug>/` and `/<language>/writing/<slug>/`.
 - `src/data/languages.ts`: English source copy and translations, in display order:
   English, Korean, Chinese (Simplified), Spanish, French, Russian, Arabic,
   Japanese, German, Persian.
 - `src/layouts/Base.astro`: metadata, navigation, language selector, and footer.
 - `src/styles/global.css`: responsive styles, including RTL support.
+- Noto Sans variable fonts are self-hosted through Fontsource packages. Noto Sans
+  KR, SC, JP, and Arabic cover the site's other scripts. Browser requests load
+  the needed Unicode subsets from this site; there is no Google Fonts request.
+  Redistributed font licenses are under `public/fonts/licenses/`.
 - `content/abm-backup/`: original English OAuth application information and privacy
   policy. These files are imported directly by the matching Astro routes.
 - `public/CNAME`: preserved custom-domain value, `joonhyunsong.kr`. The configured
   canonical origin remains `https://www.joonhyunsong.kr`, as in the previous site.
 
 English lives at `/`; other homepages use `/ko/`, `/zh/`, `/es/`, `/fr/`, `/ru/`,
-`/ar/`, `/ja/`, `/de/`, and `/fa/`. Language switching preserves the section hash.
+`/ar/`, `/ja/`, `/de/`, and `/fa/`. Language switching preserves the current note
+or homepage section hash. Reciprocal language metadata points to matching pages.
 Every homepage is static and can be read without JavaScript; the select control
 uses JavaScript for navigation. All translated homepages are labelled as AI
 translations. Korean uses the owner's supplied motto; other Korean wording and
@@ -67,5 +83,8 @@ rclone workflow; it neither executes backups nor handles OAuth credentials.
 Local rclone configuration and Google OAuth console settings are outside this
 repository and are not changed by deployment.
 
-The site intentionally includes no unverified affiliations, degrees, publication
-list, biography, or contact address. Add those only from owner-provided facts.
+Career and selected published citations follow the owner-supplied CV; current
+Ph.D. student status and snMultiome/ABM interests were confirmed by the owner.
+Private PDFs and extracted text remain outside the repository. Do not publish
+the preliminary report, CV PDF, unpublished results, phone number, or referees’
+contact details. The report informs broad research directions only.
