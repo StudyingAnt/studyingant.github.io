@@ -61,10 +61,10 @@ export const preprints: Work[] = [
     id: 'acidic-ecosystems',
     title: 'Metabolic plasticity enables cancer adaptation to acidic tumor ecosystems',
     authors: [
-      { name: 'Raafat Chalar' },
-      { name: 'Naheel Khatri' },
-      { name: 'Jowana Obeid' },
-      { name: 'Joon-Hyun Song', owner: true },
+      { name: 'Raafat Chalar', coFirst: true },
+      { name: 'Naheel Khatri', coFirst: true },
+      { name: 'Jowana Obeid', coFirst: true },
+      { name: 'Joon-Hyun Song', owner: true, coFirst: true },
       { name: 'Yujie Xiao' },
       { name: 'Saiful Samad' },
       { name: 'Andrew Chen' },
@@ -80,7 +80,8 @@ export const preprints: Work[] = [
       { name: 'Mehdi Damaghi' },
     ],
     venue: 'bioRxiv', year: 2026, version: 3, doi: '10.64898/2026.01.14.699600',
-    url: 'https://www.biorxiv.org/content/10.64898/2026.01.14.699600v3.abstract', ownerRole: 'coauthor',
+    url: 'https://www.biorxiv.org/content/10.64898/2026.01.14.699600v3.abstract', ownerRole: 'co-first',
+    // The owner confirmed that the first four authors share equal-first credit.
     evidence: ['https://api.crossref.org/works/10.64898/2026.01.14.699600'],
   },
   {

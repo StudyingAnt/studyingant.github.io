@@ -171,7 +171,7 @@ test('all works show complete author lists, preserve author order, and highlight
   await expect(page.locator('.author-owner')).toHaveCount(5);
   for (const [id, count, role] of [
     ['apobec-selection', 4, 'First author'], ['immune-tones', 9, 'Co-author'],
-    ['acidic-ecosystems', 17, 'Co-author'], ['parp-persistence', 9, 'Co-first author'],
+    ['acidic-ecosystems', 17, 'Co-first author'], ['parp-persistence', 9, 'Co-first author'],
     ['genome-robustness', 6, 'First author'],
   ] as const) {
     const work = page.locator(`[data-work="${id}"]`);
@@ -192,7 +192,7 @@ test('all works show complete author lists, preserve author order, and highlight
   await expect(page.locator('#publications-title')).toHaveText('학술지 논문');
   await expect(page.locator('#preprints-title')).toHaveText('프리프린트');
   await expect(page.locator('[data-work="parp-persistence"] .author-role')).toHaveText('공동 제1저자');
-  await expect(page.locator('[data-work="acidic-ecosystems"] .author-role')).toHaveText('공저자');
+  await expect(page.locator('[data-work="acidic-ecosystems"] .author-role')).toHaveText('공동 제1저자');
 });
 
 test('protected backup pages keep every original paragraph and link', async ({ page }) => {
