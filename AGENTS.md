@@ -30,7 +30,8 @@
 - Lead with a brief About section adapted from the owner's lab-site introduction:
   computational biology, evolution, robustness/evolvability, cancer multiome
   analysis/modeling, scientific philosophy/writing, and learning languages.
-  Use a photo placeholder until the owner supplies a portrait for publication.
+  Use the owner-approved portrait at `public/images/joon-hyun-song.jpg`, preserving
+  its natural 4:5 proportions on desktop and mobile without cropping or AI edits.
   Korean greeting: “안녕하세요, 과학하고 글쓰는 사람입니다.” Korean display name:
   “송준현”. Use the Korean name in the page title, header, hero, and footer on
   Korean pages; use Joon-Hyun Song elsewhere. About precedes detailed research;
@@ -41,6 +42,10 @@
   https://www.khartllan.com/; do not publish worldbuilding material here.
 - The owner is currently a Ph.D. student, not a completed Ph.D. or an assumed
   doctoral candidate. Career and published citations come from the supplied CV.
+  Show the Department of Applied Mathematics and Statistics and the Computational
+  Biology track separately. Use "Ph.D. student" rather than "Ph.D. studies" or an
+  awarded Ph.D.; no redundant "ongoing" suffix is needed. The owner confirmed
+  their track, which is also listed in the department's official graduate program.
   The private preliminary report is reference-only for broad research interests;
   do not commit its PDF, extracted text, figures, unpublished findings, or detailed
   hypotheses. Do not publish the CV PDF, phone number, or referees' contact data.

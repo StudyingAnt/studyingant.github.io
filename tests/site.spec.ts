@@ -10,7 +10,13 @@ test('all languages render, have reciprocal links, and fit mobile screens', asyn
     await expect(page.locator('html')).toHaveAttribute('lang', language.code === 'zh' ? 'zh-CN' : language.code);
     await expect(page.locator('html')).toHaveAttribute('dir', ['ar', 'fa'].includes(language.code) ? 'rtl' : 'ltr');
     await expect(page.locator('h1')).toHaveText(language.code === 'ko' ? '송준현' : 'Joon-Hyun Song');
-    await expect(page.locator('.portrait-placeholder')).toBeVisible();
+    const portrait = page.locator('img.portrait');
+    await expect(portrait).toBeVisible();
+    await expect(portrait).toHaveAttribute('alt', language.code === 'ko' ? '송준현' : 'Joon-Hyun Song');
+    await expect(portrait).toHaveAttribute('src', '/images/joon-hyun-song.jpg');
+    expect(await portrait.evaluate((image: HTMLImageElement) => [image.naturalWidth, image.naturalHeight])).toEqual([1080, 1350]);
+    const bounds = await portrait.boundingBox();
+    expect(bounds!.width / bounds!.height).toBeCloseTo(0.8, 2);
     await expect(page.locator('.biography p')).toHaveCount(3);
     await expect(page.locator('select option')).toHaveText(languages.map((entry) => entry.name));
     await expect(page.locator('link[rel="alternate"]')).toHaveCount(11);
@@ -96,6 +102,12 @@ test('about leads the homepage and notes switch to the same translated article',
   await expect(page.locator('.career dl > div')).toHaveCount(3);
   await expect(page.locator('.position')).toContainText('Ph.D. student');
   await expect(page.locator('.position')).toContainText('Stony Brook University');
+  await expect(page.locator('.position')).toContainText('Department of Applied Mathematics and Statistics');
+  await expect(page.locator('.position .track-link')).toHaveText('Computational Biology track');
+  await expect(page.locator('.career dd').first()).toContainText('Ph.D. student in Applied Mathematics and Statistics');
+  await expect(page.locator('.career dd').first()).toContainText('Computational Biology track');
+  await expect(page.locator('.career')).not.toContainText('studies');
+  await expect(page.locator('.career')).not.toContainText('ongoing');
   await expect(page.locator('#research')).toContainText('Single-nucleus multiome analysis');
   await expect(page.locator('#research')).toContainText('Agent-based modeling');
   await expect(page.locator('a[href="https://www.khartllan.com/"]')).toHaveCount(1);
