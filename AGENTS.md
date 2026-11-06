@@ -19,6 +19,8 @@
   transhumanism.
 - Keep the design minimal, professional, accessible, and responsive. Avoid
   invented biography, publications, affiliations, metrics, or contact details.
+- Use a pure white (`#ffffff`) page background, as requested by the owner.
+  Do not replace it with cream, ivory, or other warm off-white backgrounds.
 - Protect `/abm-backup/` and `/abm-backup/privacy/`, their English original files
   under `content/abm-backup/`, policy links, application identity, and domain.
   These are OAuth documentation pages, not a public backup service. Do not alter
@@ -26,8 +28,12 @@
 - Preserve `public/CNAME` and the canonical origin. No OAuth credentials,
   research materials, backup jobs, or local rclone configuration belong here.
 - Keep GitHub Pages deployment after `main` merges. PRs must validate without
-  deploying. All changes go through a reviewable PR; do not merge or publish
-  directly unless explicitly instructed.
+  deploying. All changes go through a reviewable PR. The owner has given standing
+  authorization to merge and deploy requested website changes once the diff has
+  been reviewed and required checks pass; do not ask for repeated confirmation.
+  Complete PR creation, validation, merge, deployment monitoring, and live-page
+  verification in the same task unless the owner explicitly requests a draft,
+  review-only work, or no deployment.
 - Run `npm ci`, `npm run check`, `npm run build`, and `npm test` for route,
   framework, content, or layout changes. Install Playwright Chromium if needed.
   Browser tests must cover protected policy content/links, all languages,
