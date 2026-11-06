@@ -19,6 +19,8 @@
   transhumanism.
 - Keep the design minimal, professional, accessible, and responsive. Avoid
   invented biography, publications, affiliations, metrics, or contact details.
+- Use a pure white (`#ffffff`) page background, as requested by the owner.
+  Do not replace it with cream, ivory, or other warm off-white backgrounds.
 - Protect `/abm-backup/` and `/abm-backup/privacy/`, their English original files
   under `content/abm-backup/`, policy links, application identity, and domain.
   These are OAuth documentation pages, not a public backup service. Do not alter
