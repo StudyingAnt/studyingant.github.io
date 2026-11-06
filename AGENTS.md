@@ -56,8 +56,10 @@
   Show localized first/co-first/co-author labels; mark equal-first authors with
   daggers only when supported by the paper or the owner's confirmation.
   The owner confirmed the 2016 fish paper is ordinary co-authorship and the PARP
-  v2 preprint is co-first with Adriana Del Pino Herrera. Keep the supplied preprint
-  version URLs; years denote first posting, separately from version numbers.
+  v2 preprint is co-first with Adriana Del Pino Herrera. In the acidic-ecosystems
+  v3 preprint, Raafat Chalar, Naheel Khatri, Jowana Obeid, and Joon-Hyun Song share
+  equal-first credit, as confirmed by the owner. Keep the supplied preprint version
+  URLs; years denote first posting, separately from version numbers.
   Record public metadata sources in each work's `evidence`. Prefer metadata for
   the linked version over older PMC/PubMed archives with superseded author lists.
   Citation UI labels live in `src/data/citations.ts`; titles/authors remain in
