@@ -1,0 +1,33 @@
+---
+import Base from '../layouts/Base.astro';
+import { copy, type Language } from '../data/languages';
+interface Props { lang: Language; }
+const { lang } = Astro.props;
+const t = copy[lang];
+---
+<Base lang={lang} title="Joon Hyun Song" description={t.intro} translated>
+  <section class="hero" aria-labelledby="motto">
+    <p class="eyebrow">{t.eyebrow}</p>
+    <h1 id="motto">{t.motto}</h1>
+    <p class="intro">{t.intro}</p>
+    {lang !== 'en' && <a class="translation-note" href="/">{t.translation}</a>}
+    <a class="text-link hero-link" href="#philosophy">{t.about} <span aria-hidden="true">↓</span></a>
+  </section>
+  <section class="section-row" id="philosophy" aria-labelledby="philosophy-title">
+    <div class="section-label"><span aria-hidden="true">01</span><h2 id="philosophy-title">{t.about}</h2></div>
+    <div class="section-content">
+      <h3>{t.philosophy}</h3>
+      <div class="principles"><p>{t.principleOne}</p><p>{t.principleTwo}</p></div>
+    </div>
+  </section>
+  <section class="section-row" id="research" aria-labelledby="research-title">
+    <div class="section-label"><span aria-hidden="true">02</span><h2 id="research-title">{t.research}</h2></div>
+    <div class="section-content">
+      <span class="topic-label" lang="en">ABM</span><h3>{t.abm}</h3><p>{t.abmText}</p>
+    </div>
+  </section>
+  <section class="section-row contact-row" id="contact" aria-labelledby="contact-title">
+    <div class="section-label"><span aria-hidden="true">03</span><h2 id="contact-title">{t.contact}</h2></div>
+    <div class="section-content"><h3>{t.connect}</h3><p>{t.connectText}</p><a class="text-link" href="https://github.com/StudyingAnt">{t.profile} <span aria-hidden="true">↗</span></a></div>
+  </section>
+</Base>
